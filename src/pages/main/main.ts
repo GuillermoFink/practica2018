@@ -14,6 +14,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { ExcelPage } from '../excel/excel';
 import { TranslateService } from '@ngx-translate/core';
+import { IdiomaPage } from '../idioma/idioma';
 /**
  * Generated class for the MainPage page.
  *
@@ -141,6 +142,9 @@ export class MainPage {
           "tipo": this.tipo,
           "foto": this.foto
         })
+        break;
+        case 'idioma':
+        this.navCtrl.setRoot(IdiomaPage)
         break;
     }
 

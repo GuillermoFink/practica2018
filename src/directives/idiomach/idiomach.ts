@@ -56,6 +56,8 @@ export class IdiomachDirective {
   listaduplicada: string;
   listaimportada: string;
   listaagregada: string;
+   /////Seleccion Idioma/////
+   asd: string;
 
   constructor() {
     console.log('Hello IdiomaesDirective Directive');

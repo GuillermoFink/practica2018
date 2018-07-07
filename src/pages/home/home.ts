@@ -121,8 +121,5 @@ export class HomePage {
     }
 
   }
-  placeMarker($event){
-    console.log($event.coords.lat);
-    console.log($event.coords.lng);
-  }
+
 }

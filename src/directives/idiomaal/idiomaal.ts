@@ -10,7 +10,6 @@ import { Directive } from '@angular/core';
   selector: '[idiomaal]' // Attribute selector
 })
 export class IdiomaalDirective {
-
   ///pagina abm////
   accionesusuario: string;
   aceptar: string;
@@ -56,6 +55,7 @@ export class IdiomaalDirective {
   listaduplicada: string;
   listaimportada: string;
   listaagregada: string;
+
 
   constructor() {
     console.log('Hello IdiomaesDirective Directive');

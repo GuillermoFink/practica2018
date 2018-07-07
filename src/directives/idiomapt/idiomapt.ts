@@ -55,6 +55,7 @@ export class IdiomaptDirective {
   listaduplicada: string;
   listaimportada: string;
   listaagregada: string;
+   /////Seleccion Idioma/////
 
   constructor() {
     console.log('Hello IdiomaptDirective Directive');
