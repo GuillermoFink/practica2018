@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'ingreso' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="fondo">
+
+  <ion-list>
+
+    <ion-item color="danger">
+      <ion-label>{{ 'esusuario' | translate }}</ion-label>
+      <ion-toggle value="foo" checked="true" [(ngModel)]="esUsuario"></ion-toggle>
+    </ion-item>
+
+    <ion-item color="danger">
+      <ion-label>{{ 'elegiridioma' | translate }}</ion-label>
+      <ion-select (ionChange)="choose($event)">
+        <ion-option *ngFor="let item of idioms" [value]="item.value">
+          {{ item.label }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+
+  <div *ngIf="esUsuario">
+    <ion-item class="fondo2">
+      <ion-input type="text" placeholder="{{ 'usuario' | translate }}" [(ngModel)]="mail"></ion-input>
+    </ion-item>
+
+    <ion-item class="fondo2">
+      <ion-input type="password" placeholder="{{ 'pass' | translate }}" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <br>
+
+    <button ion-button color="primary" icon-end (click)="login()">
+      {{ 'ingresar' | translate }}
+      <ion-icon name='arrow-forward'></ion-icon>
+    </button>
+
+
+
+  </div>
+
+  <div *ngIf="!esUsuario">
+
+    <ion-item class="fondo3">
+      <ion-input type="text" placeholder="{{ 'usuario' | translate }}" [(ngModel)]="usuario"></ion-input>
+    </ion-item>
+
+    <ion-item class="fondo3">
+      <ion-input type="email" placeholder="{{ 'email' | translate }}" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="fondo3">
+      <ion-input type="password" placeholder="{{ 'pass' | translate }}" [(ngModel)]="pass1"></ion-input>
+    </ion-item>
+
+    <ion-item class="fondo3">
+      <ion-input type="password" placeholder="{{ 'confirmarpass' | translate }}" [(ngModel)]="pass2"></ion-input>
+    </ion-item>
+    <br>
+    <button ion-button color="secondary" icon-start (click)="registrar()">
+      <ion-icon name='people'></ion-icon>
+      {{ 'registrar' | translate }}
+    </button>
+
+  </div>
+
+  <ion-fab bottom right>
+    <a ion-fab color="dark">
+      <ion-icon name="md-share"></ion-icon>
+    </a>
+    <ion-fab-list side="top">
+      <button ion-fab color="primary">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+    </ion-fab-list>
+    <ion-fab-list side="left">
+      <button ion-fab color="danger">
+        <ion-icon name="logo-googleplus"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-fab left bottom>
+    <button ion-fab color="secondary">
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </button>
+    <ion-fab-list side="right">
+      <button ion-fab (click)="asignarUsuario('admin')">ADM</button>
+      <button ion-fab (click)="asignarUsuario('alumno')">ALU</button>
+      <button ion-fab (click)="asignarUsuario('profesor')">PRO</button>
+      <button ion-fab (click)="asignarUsuario('administrativo')">ADT</button>
+    </ion-fab-list>
+  </ion-fab>
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="placeMarker($event)">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+</ion-content>

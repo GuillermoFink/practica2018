@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      {{ 'menu' | translate }}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-list>
+
+    <ion-list *ngIf="libre==1 && tipoUsuario==4" class="libre" (click)="opciones()">
+      ADVERTENCIA {{nombre}} {{apellido}}, estas a punto de quedar libre
+    </ion-list>
+
+    <button *ngIf="tipoUsuario =='1' || tipoUsuario =='3'" ion-item (click)="openPage('abm','4')">
+      {{ 'ABMalumno' | translate }}
+    </button>
+
+    <button *ngIf="tipoUsuario =='1'" ion-item (click)="openPage('abm','2')">
+      {{ 'ABMprofesor' | translate }}
+    </button>
+
+    <button *ngIf="tipoUsuario  =='1' " ion-item (click)="openPage('abm','3')">
+      {{ 'ABMadministrativo' | translate }}
+    </button>
+
+    <button *ngIf="tipoUsuario  =='3' " ion-item (click)="openPage('asistencia')">
+      {{ 'asistencia' | translate }}
+    </button>
+
+    <button *ngIf="tipoUsuario =='1' || tipoUsuario =='3'" ion-item (click)="openPage('excel')">
+      {{ 'importardescargar' | translate }}
+    </button>
+    <!--
+    <button ion-item (click)="openPage('cursadas')">
+      {{ 'cursadas' | translate }}
+    </button>
+    -->
+    <button *ngIf="tipoUsuario=='2' || tipoUsuario =='4'" ion-item (click)="openPage('encuesta')">
+      {{ 'encuesta' | translate }}
+    </button>
+
+    <button ion-item (click)="openPage('qrs')">
+      {{ 'lectorqr' | translate }}
+    </button>
+    <!--
+    <button ion-item (click)="openPage('descarga')">
+      {{ 'descarga' | translate }}
+    </button>
+    -->
+    <button ion-item (click)="openPage('perfil')">
+      {{ 'perfil' | translate }}
+    </button>
+
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+
+  <!--<button *ngIf="tipo=='2'" ion-button full color="secondary" icon-end (click)="EnviarMensaje()">
+    Mensaje de Importancia
+  </button>-->
+  <button ion-button full color="primary" icon-end (click)="Volver()">
+    {{ 'salir' | translate }}
+  </button>
+</ion-footer>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

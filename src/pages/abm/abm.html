@@ -1,0 +1,94 @@
+<!--
+  Generated template for the AbmPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'abm' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item color="danger">
+    <ion-label>{{ 'tituloabm' | translate }}</ion-label>
+    <ion-toggle value="foo" checked="true" [(ngModel)]="AltaBaja"></ion-toggle>
+  </ion-item>
+
+  <div *ngIf="AltaBaja==true">
+    <ion-item no-lines>
+      <ion-label>
+        {{ 'email' | translate }}:
+      </ion-label>
+      <ion-input type="email" [(ngModel)]="mail"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>
+        {{ 'nombre' | translate }}:
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>
+        {{ 'apellido' | translate }}:
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="apellido"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>
+        {{ 'dni' | translate }}:
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="dni"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>{{ 'sexo' | translate }}:</ion-label>
+      <ion-select [(ngModel)]="sexo">
+        <ion-option value="f">{{ 'femenino' | translate }}</ion-option>
+        <ion-option value="m">{{ 'masculino' | translate }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item no-lines>
+      <button ion-button full color="secondary" icon-start (click)="Alta()">
+        <ion-icon name='people'></ion-icon>
+        {{ 'alta' | translate }}
+      </button>
+    </ion-item>
+
+    <ion-item no-lines>
+      <button *ngIf="tipo==4" ion-button full color="primary" (click)=" AltaConArchivoAlumno()">
+        {{ 'altaconarchivo' | translate }}
+      </button>
+      <button *ngIf="tipo==2" ion-button full color="primary" (click)=" AltaConArchivoProfesor()">
+        {{ 'altaconarchivo' | translate }}
+      </button>
+      <button *ngIf="tipo==3" ion-button full color="primary" (click)=" AltaConArchivoAdminsitrativo()">
+        {{ 'altaconarchivo' | translate }}
+      </button>
+    </ion-item>
+  </div>
+  <table border="1" class="data-table" style="overflow-x:auto;">
+    <th *ngIf="archivo != null && !existe">{{ 'nombre' | translate }}</th>
+    <th *ngIf="archivo != null && !existe">{{ 'apellido' | translate }}</th>
+    <th *ngIf="archivo != null && !existe">{{ 'email' | translate }}</th>
+    <th *ngIf="archivo != null && !existe">{{ 'dni' | translate }}</th>
+    <th *ngIf="archivo != null && !existe">{{ 'sexo' | translate }}</th>
+    <tr *ngFor="let row of csvData; let i = index">
+      <td *ngFor="let data of row; let j = index; trackBy: trackByFn">
+        <ion-input type="text" [(ngModel)]="csvData[i][j]"></ion-input>
+      </td>
+    </tr>
+  </table>
+  <div *ngIf="AltaBaja==false">
+    <ion-list *ngFor="let aux of listatodos">
+      <ion-item (click)="menu(aux.id)"> {{aux.nombre}} {{aux.apellido}} </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <button ion-button full color="primary" icon-end (click)="Volver()">
+    {{ 'volver' | translate }}
+  </button>
+</ion-footer>
