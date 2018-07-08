@@ -4,7 +4,8 @@ import { MainPage } from '../main/main';
 import { ApiabmProvider } from '../../providers/apiabm/apiabm';
 import { Http } from '@angular/http';
 import { TranslateService } from '@ngx-translate/core';
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the IdiomaPage page.
@@ -23,8 +24,16 @@ export class IdiomaPage {
   lat;
   lng;
   idioma;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public translateService: TranslateService) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public translateService: TranslateService, public miLocacion: Geolocation) {
+    this.miLocacion.getCurrentPosition().then((resp) => {
+      this.lat = resp.coords.latitude;
+      this.lng = resp.coords.longitude;
+      
+      // resp.coords.latitude
+      // resp.coords.longitude
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
   }
 
   ionViewDidLoad() {
@@ -66,7 +75,11 @@ export class IdiomaPage {
       console.log("EN - KANSAS");
       this.idioma = 'en';
     }else{
-      alert("asd");
+      swal({
+        type: 'info',
+        title: 'Sorry',
+        text: 'We dont have support for the selected country',
+      })
     }
 
     this.translateService.use(this.idioma);
@@ -74,5 +87,30 @@ export class IdiomaPage {
 
   Volver() {
     this.navCtrl.setRoot(MainPage)
+  }
+  ar(){
+    this.lat = -33.705921648542684;
+    this.lng = -64.9294106625;
+    this.test();
+  }
+  al(){
+    this.lat = 52.06870666321749;
+    this.lng = 10.89938075870532;
+    this.test();
+  }
+  pt(){
+    this.lat = -8.447754367690132;
+    this.lng = -51.394254412500004;
+    this.test();
+  }
+  ch(){
+    this.lat = 36.91033167040192;
+    this.lng = 103.76915820849877;
+    this.test();
+  }
+  en(){
+    this.lat = 42.62767220719085;
+    this.lng = -101.71704136636356;
+    this.test();
   }
 }

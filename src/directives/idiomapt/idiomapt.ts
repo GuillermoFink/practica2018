@@ -56,7 +56,7 @@ export class IdiomaptDirective {
   listaimportada: string;
   listaagregada: string;
    /////Seleccion Idioma/////
-
+   lenguaje: string;
   constructor() {
     console.log('Hello IdiomaptDirective Directive');
     ////pagina abm////
@@ -104,6 +104,7 @@ export class IdiomaptDirective {
     this.listaimportada = "Esta lista já foi importada"
     this.listaduplicada = "Lista duplicada"
     this.listaagregada = "A lista foi adicionada com sucesso!"
+    this.lenguaje = "LENGUAJE POR"
   }
 
 }

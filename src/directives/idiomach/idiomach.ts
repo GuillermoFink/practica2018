@@ -57,7 +57,7 @@ export class IdiomachDirective {
   listaimportada: string;
   listaagregada: string;
    /////Seleccion Idioma/////
-   asd: string;
+  lenguaje: string;
 
   constructor() {
     console.log('Hello IdiomaesDirective Directive');
@@ -106,6 +106,8 @@ export class IdiomachDirective {
     this.listaimportada = " 该列表已被导入"
     this.listaduplicada = "重复列表"
     this.listaagregada = "该列表已成功添加！"
+    //////Idioma////////
+    this.lenguaje = "語言"
   }
 
 }

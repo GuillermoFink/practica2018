@@ -56,7 +56,7 @@ export class IdiomaesDirective {
   listaimportada: string;
   listaagregada: string;
    /////Seleccion Idioma/////
-   asd: string;
+   lenguaje: string;
 
   constructor() {
     console.log('Hello IdiomaesDirective Directive');
@@ -105,6 +105,7 @@ export class IdiomaesDirective {
     this.listaimportada = "Esta lista ya fue importada"
     this.listaduplicada = "Lista duplicada"
     this.listaagregada = "La lista fue agregada exitosamente!"
+    this.lenguaje = "LENGUAJE ES"
 
   }
 

@@ -7,17 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'activar' | translate }}</ion-title>
+    <ion-title>{{ 'volver' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="placeMarker($event)">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="pinmap_ar" (click)="ar()">
+          
+      </ion-col>
+      <ion-col class="pinmap_al" (click)="al()">
+      </ion-col>
+      <ion-col class="pinmap_ch" (click)="ch()">
+      </ion-col>
+      <ion-col class="pinmap_en" (click)="en()">
+      </ion-col>
+      <ion-col class="pinmap_pt" (click)="pt()">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="placeMarker($event)" [zoom]="4">
     <agm-marker *ngIf="lat" [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
-  
+
 </ion-content>
 
 <ion-footer>

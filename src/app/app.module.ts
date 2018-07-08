@@ -40,7 +40,8 @@ import { IdiomachDirective } from '../directives/idiomach/idiomach';
 
 /////MAPA/////
 import { AgmCoreModule } from '@agm/core';
-
+////GEOLOCALIZACION/////
+import { Geolocation } from '@ionic-native/geolocation';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -127,6 +128,7 @@ firebase.initializeApp(config)
     BarcodeScanner,
     DatePicker,
     AngularFireDatabase,
+    Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApiabmProvider,
     IdiomaesDirective,
